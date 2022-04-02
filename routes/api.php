@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CoinController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("/coin", [CoinController::class, 'list']);
+Route::post("/coin", [CoinController::class, 'insert']);
+Route::delete("/coin", [CoinController::class, 'returnCoins']);
+
+
+Route::post("/order", [OrderController::class, 'createOrder']);
