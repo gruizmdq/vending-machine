@@ -27,14 +27,14 @@ class OrderController extends Controller
             
             DB::commit();
             
-            return $change;
+            return ["item" => $item->code, "change" => $change];
 
         }
         catch(ValidationException $e) {
             return response("You must select a product.", 400);
         }
         catch(ModelNotFoundException $e) {
-            return response("Product not found.", 400);
+            return response("Product not found.", 404);
         }
         catch(Exception $e){
             DB::rollBack();

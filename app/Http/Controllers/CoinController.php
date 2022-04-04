@@ -19,7 +19,7 @@ class CoinController extends Controller
     }
 
     public function insert(Request $request) {
-        if (self::getValueValidator($request->all())->fails()) {
+        if (Coin::getValueValidator($request->all())->fails()) {
             return response("Coin not accepted, coin was returned.", 400);
         }
         try {
