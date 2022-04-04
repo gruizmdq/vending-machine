@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoinController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,7 @@ Route::get("/coin", [CoinController::class, 'list']);
 Route::post("/coin", [CoinController::class, 'insert']);
 Route::delete("/coin", [CoinController::class, 'returnCoins']);
 
-
 Route::post("/order", [OrderController::class, 'createOrder']);
+
+Route::post("/service", [ServiceController::class, 'newService']);
+

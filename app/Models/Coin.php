@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class Coin extends Model
 {
@@ -44,6 +46,15 @@ class Coin extends Model
     public static function setInsertedCoinToIsNotReturned() {
         Coin::where('isForReturn', true)
             ->update(['isForReturn' => false]);
+    }
+
+    public static function getValueValidator($data) {
+        return Validator::make($data, [
+            'value' => [
+                'required',
+                Rule::in(Coin::VALUES),
+            ],
+        ]);
     }
 }
 

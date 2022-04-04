@@ -29,7 +29,6 @@ class OrderController extends Controller
             
             return $change;
 
-
         }
         catch(ValidationException $e) {
             return response("You must select a product.", 400);

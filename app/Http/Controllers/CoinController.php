@@ -19,7 +19,7 @@ class CoinController extends Controller
     }
 
     public function insert(Request $request) {
-        if (self::getValueValidator($request)->fails()) {
+        if (self::getValueValidator($request->all())->fails()) {
             return response("Coin not accepted, coin was returned.", 400);
         }
         try {
@@ -43,15 +43,6 @@ class CoinController extends Controller
         catch (Exception $e) {
             return response("There was an error.", 500);
         }
-    }
-
-    private function getValueValidator($request) {
-        return Validator::make($request->all(), [
-            'value' => [
-                'required',
-                Rule::in(Coin::VALUES),
-            ],
-        ]);
     }
 
 }
