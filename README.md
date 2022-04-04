@@ -31,6 +31,15 @@ Luego, realizar los seeds de la base de datos
 php artisan db:seed
 ```
 
+Para correr Test:
+```sh
+php artisan test
+```
+Si falla ese comando intentar con:
+```sh
+./vendor/bin/sail artisan test  
+```
+
 ## Endpoints
 
 | Método | Url | Descripción | Requiere Autorización?
